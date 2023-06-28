@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Toast from '../Utils/Toast'
+import { BaseUrl } from '../constants/api.constants'
 
 const AuthContext = React.createContext()
 
@@ -38,11 +39,7 @@ export function AuthProvider({ children }) {
       },
     }
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}api/token/`,
-        authBody,
-        header
-      )
+      const res = await axios.post(`${BaseUrl}/api/token/`, authBody, header)
       if (res.status === 200) {
         const data = await res.data.access
         localStorage.setItem('userToken', data)
