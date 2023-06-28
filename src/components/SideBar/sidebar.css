@@ -1,0 +1,22 @@
+.launch-btn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .launch-btn {
+    display: block;
+  }
+}
+.username {
+  display: none;
+}
+.logout-btn:hover .username {
+  display: block !important;
+}
+
+.logout-btn:hover .logout {
+  display: none !important;
+}
