@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
     }
     try {
       const res = await axios.post(
-        'http://127.0.0.1:8000/api/token/',
+        `${process.env.REACT_APP_BASE_URL}api/token/`,
         authBody,
         header
       )
@@ -57,7 +57,7 @@ export function AuthProvider({ children }) {
   const loggedInUserInfo = async (token, username) => {
     try {
       const res2 = await axios.get(
-        `http://127.0.0.1:8000/user/?username=${username}`,
+        `${process.env.REACT_APP_BASE_URL}user/?username=${username}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ export function AuthProvider({ children }) {
 
   async function UserInfo() {
     try {
-      const res2 = await axios.get(`http://127.0.0.1:8000/user/`, {
+      const res2 = await axios.get(`${process.env.REACT_APP_BASE_URL}user/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`,
         },
