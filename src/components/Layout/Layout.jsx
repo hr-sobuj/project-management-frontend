@@ -19,7 +19,10 @@ const PageLayout = ({ children }) => {
         style={{ position: 'fixed', bottom: '0rem' }}
       >
         <h6 className='text-white  m-0'>
-          Developed @ By Zafor, Sobuj, Shishir
+          Developed @{' '}
+          <a href='https://fb.com/hr.sobuj.bd' className='text-white'>
+            Habibur Rahman Sobuj
+          </a>
         </h6>
         <h6 className='text-white  m-0'>
           Department of Computer Science & Engineering
