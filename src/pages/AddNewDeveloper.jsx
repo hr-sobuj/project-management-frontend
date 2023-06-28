@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import Toast from '../Utils/Toast'
 import NavBar from '../components/NavBar/NavBar'
+import { BaseUrl } from '../constants/api.constants'
 
 const AddNewDeveloper = () => {
   const [user, setUser] = useState({
@@ -23,13 +24,9 @@ const AddNewDeveloper = () => {
 
     try {
       const token = localStorage.getItem('userToken')
-      const res = await axios.post(
-        'http://127.0.0.1:8000/dev/register/',
-        newObj,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
+      const res = await axios.post(`${BaseUrl}dev/register/`, newObj, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
 
       if (res.status === 201) {
         Toast('success', 'Developer created successfully!')

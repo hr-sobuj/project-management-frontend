@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import Toast from '../../Utils/Toast'
+import { BaseUrl } from '../../constants/api.constants'
 
 export default function CreateNewProjectForm() {
   const [project, setProject] = useState({
@@ -11,7 +12,7 @@ export default function CreateNewProjectForm() {
   async function postProject() {
     try {
       const token = localStorage.getItem('userToken')
-      const res = await axios.post('http://127.0.0.1:8000/project/', project, {
+      const res = await axios.post(`${BaseUrl}/project/`, project, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

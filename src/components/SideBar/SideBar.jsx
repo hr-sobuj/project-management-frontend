@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import Toast from '../../Utils/Toast'
 import './sidebar.css'
+import { BaseUrl } from '../../constants/api.constants'
 const Sidebar = () => {
   const [allProjects, setAllProjects] = useState([])
   const [tasks, setTasks] = useState([])
@@ -22,7 +23,7 @@ const Sidebar = () => {
   const loadAllProjects = async () => {
     const token = localStorage.getItem('userToken')
     try {
-      const res = await axios.get('http://127.0.0.1:8000/project/', {
+      const res = await axios.get(`${BaseUrl}/project/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,14 +43,11 @@ const Sidebar = () => {
 
     try {
       const token = localStorage.getItem('userToken')
-      const res = await axios.get(
-        `http://127.0.0.1:8000/task/?developer=${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      const res = await axios.get(`${BaseUrl}/task/?developer=${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
       if (res.status === 200) {
         setTasks(res?.data)

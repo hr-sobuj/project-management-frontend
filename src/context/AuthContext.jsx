@@ -53,14 +53,11 @@ export function AuthProvider({ children }) {
 
   const loggedInUserInfo = async (token, username) => {
     try {
-      const res2 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}user/?username=${username}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      const res2 = await axios.get(`${BaseUrl}/user/?username=${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
       if (res2.status === 200) {
         setCurrentUserInfo(res2?.data[0])
@@ -77,7 +74,7 @@ export function AuthProvider({ children }) {
 
   async function UserInfo() {
     try {
-      const res2 = await axios.get(`${process.env.REACT_APP_BASE_URL}user/`, {
+      const res2 = await axios.get(`${BaseUrl}/user/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('userToken')}`,
         },

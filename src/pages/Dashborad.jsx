@@ -6,6 +6,7 @@ import PageLayout from '../components/Layout/Layout'
 import { useAuth } from '../context/AuthContext'
 import Toast from '../Utils/Toast'
 import { Popconfirm } from 'antd'
+import { BaseUrl } from '../constants/api.constants'
 
 const Dashborad = () => {
   const auth = useAuth()
@@ -32,7 +33,7 @@ const Dashborad = () => {
 
   const loadAllUsers = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/user', {
+      const res = await axios.get(`${BaseUrl}/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -47,7 +48,7 @@ const Dashborad = () => {
 
   //   async function findUser(devid) {
   //     try {
-  //       const res2 = await axios.get(`http://127.0.0.1:8000/user/${devid}`, {
+  //       const res2 = await axios.get(`${BaseUrl}/user/${devid}`, {
   //         headers: {
   //           Authorization: `Bearer ${token}`,
   //         },
@@ -66,7 +67,7 @@ const Dashborad = () => {
   const loadAllDevelopers = async () => {
     try {
       const token = localStorage.getItem('userToken')
-      const res = await axios.get('http://127.0.0.1:8000/user', {
+      const res = await axios.get(`${BaseUrl}/user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -86,7 +87,7 @@ const Dashborad = () => {
     }
     try {
       const res = await axios.post(
-        `http://127.0.0.1:8000/task/?project_id=${id}`,
+        `${BaseUrl}/task/?project_id=${id}`,
         dataToSend,
         {
           headers: {
@@ -125,14 +126,11 @@ const Dashborad = () => {
     const token = localStorage.getItem('userToken')
     const pid = parseInt(id)
     try {
-      const res = await axios.get(
-        `http://127.0.0.1:8000/task/?project_id=${pid}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      const res = await axios.get(`${BaseUrl}/task/?project_id=${pid}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
 
       if (res.status === 200) {
         const tempArr = []
@@ -151,7 +149,7 @@ const Dashborad = () => {
       let res
       type === 'Update'
         ? (res = await axios.put(
-            `http://127.0.0.1:8000/task/${tid}/`,
+            `${BaseUrl}/task/${tid}/`,
             { ...task, task_status: task_status },
             {
               headers: {
@@ -159,7 +157,7 @@ const Dashborad = () => {
               },
             }
           ))
-        : (res = await axios.delete(`http://127.0.0.1:8000/task/${tid}/`, {
+        : (res = await axios.delete(`${BaseUrl}/task/${tid}/`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
