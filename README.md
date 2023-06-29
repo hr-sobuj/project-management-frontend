@@ -52,6 +52,15 @@ To install and run the frontend of the Project Management Application, follow th
 
 This screenshot shows an example of the Project Management Application frontend, displaying the project dashboard and developer activity.
 
+## Testing
+
+To test the application, use the following credentials:
+
+- Email: user1
+- Password: Admin1,1
+
+Use the provided credentials to log in and test the various features and functionalities of the live chat application.
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
