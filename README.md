@@ -56,7 +56,7 @@ This screenshot shows an example of the Project Management Application frontend,
 
 To test the application, use the following credentials:
 
-- Email: user1
+- Username: user1
 - Password: Admin1,1
 
 Use the provided credentials to log in and test the various features and functionalities of the live chat application.
